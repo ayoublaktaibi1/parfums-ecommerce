@@ -3,12 +3,7 @@
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-}
-
-.product-card:hover {
-  box-shadow: 0 8px 30px rgba(45, 27, 105, 0.15);
 }
 
 .product-link {
@@ -36,7 +31,7 @@
 }
 
 .product-info {
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
 }
 
 .product-name {
@@ -54,14 +49,15 @@
   margin-bottom: 0.5rem;
 }
 
-.current-price {
-  font-size: 1rem;
+/* Classes spécifiques pour éviter les conflits */
+.product-card .product-current-price {
+  font-size: 1.2rem;
   font-weight: bold;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
-.original-price {
-  font-size: 0.9rem;
+.product-card .product-original-price {
+  font-size: 1rem;
   color: var(--text-light);
   text-decoration: line-through;
 }
@@ -70,23 +66,22 @@
   padding: 0 1rem 1rem;
 }
 
-.add-to-cart-btn {
+/* Classe spécifique pour éviter les conflits */
+.product-add-to-cart-btn {
   width: 100%;
-  padding: 0.7rem 1rem;
+  padding: 0.8rem 1rem;
   background-color: var(--black);
   color: var(--white);
   border: none;
   border-radius: 8px;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.add-to-cart-btn:hover {
-  background-color: var(--secondary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(31, 43, 143, 0.3);
+.product-add-to-cart-btn:hover {
+  background-color: var(--primary-color);
 }
 
 @media (max-width: 768px) {
@@ -102,16 +97,16 @@
     font-size: 1rem;
   }
   
-  .current-price {
+  .product-card .current-price {
     font-size: 0.8rem;
   }
 
-  .original-price {
+  .product-card .original-price {
     font-size: 0.7rem;
   }
 
-  .add-to-cart-btn {
-    padding: 0.7rem 0.8rem;
-    font-size: 0.9rem;
+  .product-card .add-to-cart-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
   }
 }

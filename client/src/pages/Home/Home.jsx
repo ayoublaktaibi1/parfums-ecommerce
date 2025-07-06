@@ -72,6 +72,43 @@ const Home = () => {
         </section>
       )}
 
+      {/* Packs Section - 4 par ligne */}
+      <section className="packs-section">
+        <div className="container">
+          <div className="section-header">
+            <h2>Nos packs découverte</h2>
+            <p>Économisez avec nos packs spécialement sélectionnés</p>
+          </div>
+          
+          <div className="packs-grid">
+            {packs.map((pack) => (
+              <div key={pack.id} className="pack-card">
+                <div className="pack-image">
+                  <img src={pack.image} alt={pack.name} />
+                  <div className="pack-discount-badge">
+                    -{pack.discount}%
+                  </div>
+                </div>
+                
+                <div className="pack-info">
+                  <h3>{pack.name}</h3>
+                  <p className="pack-description">{pack.description}</p>
+                  
+                  <div className="pack-pricing">
+                    <span className="pack-price">{formatPrice(pack.price)}</span>
+                    <span className="pack-original-price">{formatPrice(pack.originalPrice)}</span>
+                  </div>
+                  
+                  <button className="pack-add-to-cart-btn">
+                    Ajouter au panier
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured Products - Seulement 4 cartes */}
       <section className="featured-products">
         <div className="container">
@@ -90,43 +127,6 @@ const Home = () => {
             <Link to="/products" className="btn btn-primary">
               Voir tous les produits
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Packs Section - 4 par ligne */}
-      <section className="packs-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Nos packs découverte</h2>
-            <p>Économisez avec nos packs spécialement sélectionnés</p>
-          </div>
-          
-          <div className="packs-grid">
-            {packs.map((pack) => (
-              <div key={pack.id} className="pack-card">
-                <div className="pack-image">
-                  <img src={pack.image} alt={pack.name} />
-                  <div className="discount-badge">
-                    -{pack.discount}%
-                  </div>
-                </div>
-                
-                <div className="pack-info">
-                  <h3>{pack.name}</h3>
-                  <p className="pack-description">{pack.description}</p>
-                  
-                  <div className="pack-pricing">
-                    <span className="original-price">{formatPrice(pack.originalPrice)}</span>
-                    <span className="pack-price">{formatPrice(pack.price)}</span>
-                  </div>
-                  
-                  <button className="add-to-cart-btn">
-                    Ajouter au panier
-                  </button>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

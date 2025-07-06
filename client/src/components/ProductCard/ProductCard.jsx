@@ -37,11 +37,11 @@ const ProductCard = ({ product, selectedSize }) => {
           <div className="product-pricing">
             {product.originalPrice ? (
               <>
-                <span className="current-price">{formatPrice(product.price)}</span>
-                <span className="original-price">{formatPrice(product.originalPrice)}</span>
+                <span className="product-current-price">{formatPrice(product.price)}</span>
+                <span className="product-original-price">{formatPrice(product.originalPrice)}</span>
               </>
             ) : (
-              <span className="current-price">{formatPrice(product.price)}</span>
+              <span className="product-current-price">{formatPrice(product.price)}</span>
             )}
           </div>
         </div>
@@ -49,7 +49,7 @@ const ProductCard = ({ product, selectedSize }) => {
       
       <div className="product-actions">
         <button 
-          className="add-to-cart-btn"
+          className="product-add-to-cart-btn"
           onClick={handleQuickAdd}
         >
           Ajouter au panier

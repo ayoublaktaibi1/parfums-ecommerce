@@ -1,21 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
 :root {
-  /* Palette de couleurs moderne pour parfums */
-  --primary-color: #1f2b8f;        /* Violet profond élégant */
-  --secondary-color: #88421d;       /* Brun chaud choisi */
-  --accent-color: #4ecdc4;          /* Turquoise rafraîchi */
-  --label-color: #e74c3c;           /* Rouge pour les étiquettes */
+  /* Palette de couleurs simplifiée */
+  --primary-color: #8b6b42;        /* Couleur principale marron */
+  --secondary-color: #000000;      /* Noir */
+  --accent-color: #8b6b42;         /* Marron pour les accents */
+  --label-color: #8b6b42;          /* Marron pour les étiquettes */
   
   /* Couleurs de texte */
-  --text-color: #2c3e50;
-  --text-light: #7f8c8d;
+  --text-color: #000000;           /* Noir */
+  --text-light: #666666;           /* Gris moyen */
   
   /* Couleurs de fond */
-  --background-color: #f8f9fa;      /* Gris très clair */
-  --white: #ffffff;
-  --black: #000000;
+  --background-color: #f5f5f5;     /* Gris très clair */
+  --white: #ffffff;                /* Blanc */
+  --black: #000000;                /* Noir */
   
   /* Effets */
-  --shadow: 0 4px 20px rgba(31, 43, 143, 0.1);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   --border-radius: 12px;
 }
 
@@ -23,11 +25,101 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Figtree', sans-serif;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-color);
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: 0;
+}
+
+.container {
+  padding: 0 40px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-secondary {
+  background-color: var(--text-light);
+  color: var(--white);
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-color);
+}
+
+.btn-danger {
+  background-color: var(--label-color);
+  color: var(--white);
+}
+
+.btn-danger:hover {
+  background-color: var(--black);
+}
+
+.btn-success {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-success:hover {
+  background-color: var(--black);
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
 }

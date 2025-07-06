@@ -82,7 +82,7 @@
 .current-price {
   font-size: 2.2rem;
   font-weight: bold;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .original-price {
@@ -176,8 +176,6 @@
 
 .add-to-cart-btn:hover {
   background-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(31, 43, 143, 0.3);
 }
 
 .out-of-stock-message {
