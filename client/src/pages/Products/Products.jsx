@@ -10,8 +10,8 @@ const Products = () => {
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [sortBy, setSortBy] = useState('name')
   const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '')
+  const [selectedSize, setSelectedSize] = useState('10ml') // Par défaut 10ml
 
   useEffect(() => {
     // Simuler un appel API
@@ -39,24 +39,14 @@ const Products = () => {
       filtered = filtered.filter(product => product.category === categoryParam)
     }
 
-    // Tri
-    filtered.sort((a, b) => {
-      switch (sortBy) {
-        case 'price-asc':
-          return a.price - b.price
-        case 'price-desc':
-          return b.price - a.price
-        case 'name':
-          return a.name.localeCompare(b.name)
-        case 'brand':
-          return a.brand.localeCompare(b.brand)
-        default:
-          return 0
-      }
-    })
+    // Filtrage par taille sélectionnée
+    filtered = filtered.filter(product => product.sizes.includes(selectedSize))
+
+    // Tri par nom par défaut
+    filtered.sort((a, b) => a.name.localeCompare(b.name))
 
     setFilteredProducts(filtered)
-  }, [products, searchTerm, sortBy, searchParams])
+  }, [products, searchTerm, selectedSize, searchParams])
 
   const handleSearchChange = (e) => {
     const value = e.target.value
@@ -77,13 +67,6 @@ const Products = () => {
     const params = new URLSearchParams(searchParams)
     params.delete('search')
     setSearchParams(params)
-  }
-
-  const getResultsText = () => {
-    const total = filteredProducts.length
-    if (total === 0) return 'Aucun produit trouvé'
-    if (total === 1) return '1 produit trouvé'
-    return `${total} produits trouvés`
   }
 
   const getCategoryTitle = () => {
@@ -118,7 +101,7 @@ const Products = () => {
         </div>
 
         <div className="products-content">
-          <div className="search-and-sort">
+          <div className="search-and-filters">
             <div className="search-section">
               <div className="search-bar">
                 <input
@@ -141,29 +124,19 @@ const Products = () => {
               </div>
             </div>
 
-            <div className="toolbar">
-              <div className="results-info">
-                <span>{getResultsText()}</span>
-                {searchTerm && (
-                  <span className="search-info">
-                    pour "{searchTerm}"
-                  </span>
-                )}
-              </div>
-              
-              <div className="sort-controls">
-                <label htmlFor="sort">Trier par :</label>
-                <select
-                  id="sort"
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                >
-                  <option value="name">Nom (A-Z)</option>
-                  <option value="brand">Marque</option>
-                  <option value="price-asc">Prix croissant</option>
-                  <option value="price-desc">Prix décroissant</option>
-                </select>
-              </div>
+            <div className="size-filters">
+              <button
+                className={`size-filter-btn ${selectedSize === '5ml' ? 'active' : ''}`}
+                onClick={() => setSelectedSize('5ml')}
+              >
+                5ml
+              </button>
+              <button
+                className={`size-filter-btn ${selectedSize === '10ml' ? 'active' : ''}`}
+                onClick={() => setSelectedSize('10ml')}
+              >
+                10ml
+              </button>
             </div>
           </div>
 
@@ -173,7 +146,7 @@ const Products = () => {
               <h3>Aucun produit trouvé</h3>
               {searchTerm ? (
                 <div>
-                  <p>Aucun résultat pour "{searchTerm}"</p>
+                  <p>Aucun résultat pour "{searchTerm}" en taille {selectedSize}</p>
                   <button
                     className="btn btn-primary"
                     onClick={clearSearch}
@@ -182,13 +155,17 @@ const Products = () => {
                   </button>
                 </div>
               ) : (
-                <p>Aucun produit disponible dans cette catégorie</p>
+                <p>Aucun produit disponible en taille {selectedSize} dans cette catégorie</p>
               )}
             </div>
           ) : (
             <div className="products-grid">
               {filteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard 
+                  key={product.id} 
+                  product={product} 
+                  selectedSize={selectedSize}
+                />
               ))}
             </div>
           )}

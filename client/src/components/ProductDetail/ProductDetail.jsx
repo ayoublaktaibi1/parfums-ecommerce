@@ -9,8 +9,8 @@ const ProductDetail = () => {
   const navigate = useNavigate()
   const { addToCart } = useCart()
   const [product, setProduct] = useState(null)
-  const [selectedSize, setSelectedSize] = useState('')
   const [quantity, setQuantity] = useState(1)
+  const [selectedSize, setSelectedSize] = useState('10ml') // Taille fixe par défaut
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -19,7 +19,9 @@ const ProductDetail = () => {
       const foundProduct = parfums.find(p => p.id === parseInt(id))
       if (foundProduct) {
         setProduct(foundProduct)
-        setSelectedSize(foundProduct.sizes[0])
+        // Taille fixe à 10ml si disponible, sinon la première taille
+        const defaultSize = foundProduct.sizes.includes('10ml') ? '10ml' : foundProduct.sizes[0]
+        setSelectedSize(defaultSize)
       }
       setLoading(false)
     }
@@ -39,24 +41,6 @@ const ProductDetail = () => {
       style: 'currency',
       currency: 'EUR'
     }).format(price)
-  }
-
-  const getCategoryLabel = (category) => {
-    const labels = {
-      'homme': 'Homme',
-      'femme': 'Femme',
-      'unisexe': 'Unisexe'
-    }
-    return labels[category] || category
-  }
-
-  const getTypeLabel = (type) => {
-    const labels = {
-      'ete': 'Été',
-      'hiver': 'Hiver',
-      'classique': 'Classique'
-    }
-    return labels[type] || type
   }
 
   if (loading) {
@@ -97,25 +81,17 @@ const ProductDetail = () => {
 
           <div className="product-detail-info">
             <div className="product-header">
-              <h1>{product.name}</h1>
+              <h1>{product.name} - {selectedSize}</h1>
               <p className="brand">{product.brand}</p>
-              <p className="price">{formatPrice(product.price)}</p>
-            </div>
-
-            <div className="product-meta">
-              <div className="meta-item">
-                <span className="meta-label">Catégorie:</span>
-                <span className="meta-value">{getCategoryLabel(product.category)}</span>
-              </div>
-              <div className="meta-item">
-                <span className="meta-label">Type:</span>
-                <span className="meta-value">{getTypeLabel(product.type)}</span>
-              </div>
-              <div className="meta-item">
-                <span className="meta-label">Disponibilité:</span>
-                <span className={`meta-value ${product.inStock ? 'in-stock' : 'out-of-stock'}`}>
-                  {product.inStock ? 'En stock' : 'Rupture de stock'}
-                </span>
+              <div className="product-pricing">
+                {product.originalPrice ? (
+                  <>
+                    <span className="current-price">{formatPrice(product.price)}</span>
+                    <span className="original-price">{formatPrice(product.originalPrice)}</span>
+                  </>
+                ) : (
+                  <span className="current-price">{formatPrice(product.price)}</span>
+                )}
               </div>
             </div>
 
@@ -124,23 +100,8 @@ const ProductDetail = () => {
               <p>{product.description}</p>
             </div>
 
-            {product.inStock && (
+            {product.inStock ? (
               <div className="product-options">
-                <div className="size-selection">
-                  <label htmlFor="size">Taille:</label>
-                  <select
-                    id="size"
-                    value={selectedSize}
-                    onChange={(e) => setSelectedSize(e.target.value)}
-                  >
-                    {product.sizes.map((size) => (
-                      <option key={size} value={size}>
-                        {size}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
                 <div className="quantity-selection">
                   <label htmlFor="quantity">Quantité:</label>
                   <div className="quantity-controls">
@@ -170,15 +131,13 @@ const ProductDetail = () => {
                 </div>
 
                 <button
-                  className="btn btn-primary add-to-cart-btn"
+                  className="add-to-cart-btn"
                   onClick={handleAddToCart}
                 >
                   Ajouter au panier - {formatPrice(product.price * quantity)}
                 </button>
               </div>
-            )}
-
-            {!product.inStock && (
+            ) : (
               <div className="out-of-stock-message">
                 <p>Ce produit est actuellement en rupture de stock.</p>
                 <button

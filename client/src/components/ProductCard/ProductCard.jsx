@@ -4,14 +4,17 @@ import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
 import './ProductCard.css'
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, selectedSize }) => {
   const { addToCart } = useCart()
+  
+  // Utiliser la taille sélectionnée ou la première taille disponible
+  const currentSize = selectedSize || product.sizes[0]
 
   const handleQuickAdd = (e) => {
     e.preventDefault()
     e.stopPropagation()
-    if (product.inStock && product.sizes.length > 0) {
-      addToCart(product, product.sizes[0], 1)
+    if (product.inStock && currentSize) {
+      addToCart(product, currentSize, 1)
     }
   }
 
@@ -30,22 +33,23 @@ const ProductCard = ({ product }) => {
         </div>
         
         <div className="product-info">
-          <h3 className="product-name">{product.name}</h3>
-          <p className="product-brand">{product.brand}</p>
-          <p className="product-price">{formatPrice(product.price)}</p>
-          
-          <div className="product-sizes">
-            {product.sizes.slice(0, 3).map((size, index) => (
-              <span key={index} className="size-tag">{size}</span>
-            ))}
-            {product.sizes.length > 3 && <span className="size-tag">+{product.sizes.length - 3}</span>}
+          <h3 className="product-name">{product.name} - {currentSize}</h3>
+          <div className="product-pricing">
+            {product.originalPrice ? (
+              <>
+                <span className="current-price">{formatPrice(product.price)}</span>
+                <span className="original-price">{formatPrice(product.originalPrice)}</span>
+              </>
+            ) : (
+              <span className="current-price">{formatPrice(product.price)}</span>
+            )}
           </div>
         </div>
       </Link>
       
       <div className="product-actions">
         <button 
-          className="btn btn-primary"
+          className="add-to-cart-btn"
           onClick={handleQuickAdd}
         >
           Ajouter au panier

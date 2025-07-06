@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ProductCard from '../../components/ProductCard/ProductCard'
-import { parfums, packs, promotions, categoryImages } from '../../data/mockData'
+import { parfums, packs, promotions } from '../../data/mockData'
 import './Home.css'
 
 const Home = () => {
@@ -10,8 +10,8 @@ const Home = () => {
   const [currentPromotion, setCurrentPromotion] = useState(0)
 
   useEffect(() => {
-    // Charger les produits en vedette
-    const featured = parfums.filter(product => product.featured).slice(0, 8)
+    // Charger seulement 4 produits en vedette
+    const featured = parfums.filter(product => product.featured).slice(0, 4)
     setFeaturedProducts(featured)
 
     // Carrousel automatique pour les promotions
@@ -72,7 +72,7 @@ const Home = () => {
         </section>
       )}
 
-      {/* Featured Products */}
+      {/* Featured Products - Seulement 4 cartes */}
       <section className="featured-products">
         <div className="container">
           <div className="section-header">
@@ -82,7 +82,7 @@ const Home = () => {
           
           <div className="products-grid">
             {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} selectedSize="10ml" />
             ))}
           </div>
           
@@ -94,7 +94,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Packs Section */}
+      {/* Packs Section - 4 par ligne */}
       <section className="packs-section">
         <div className="container">
           <div className="section-header">
@@ -107,58 +107,26 @@ const Home = () => {
               <div key={pack.id} className="pack-card">
                 <div className="pack-image">
                   <img src={pack.image} alt={pack.name} />
-                  <div className="savings-badge">
-                    Économisez {formatPrice(pack.originalPrice - pack.price)}
+                  <div className="discount-badge">
+                    -{pack.discount}%
                   </div>
                 </div>
                 
                 <div className="pack-info">
                   <h3>{pack.name}</h3>
-                  <p>{pack.description}</p>
+                  <p className="pack-description">{pack.description}</p>
                   
                   <div className="pack-pricing">
                     <span className="original-price">{formatPrice(pack.originalPrice)}</span>
                     <span className="pack-price">{formatPrice(pack.price)}</span>
                   </div>
                   
-                  <button className="btn btn-primary">
+                  <button className="add-to-cart-btn">
                     Ajouter au panier
                   </button>
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Categories Section */}
-      <section className="categories-section">
-        <div className="container">
-          <div className="section-header">
-            <h2>Nos catégories</h2>
-            <p>Trouvez le parfum parfait selon vos préférences</p>
-          </div>
-          
-          <div className="categories-grid">
-            <Link to="/products?category=femme" className="category-card">
-              <div className="category-image">
-                <img src={categoryImages.femme} alt="Parfums Femme" />
-              </div>
-              <div className="category-info">
-                <h3>Parfums Femme</h3>
-                <p>Élégance et féminité</p>
-              </div>
-            </Link>
-            
-            <Link to="/products?category=homme" className="category-card">
-              <div className="category-image">
-                <img src={categoryImages.homme} alt="Parfums Homme" />
-              </div>
-              <div className="category-info">
-                <h3>Parfums Homme</h3>
-                <p>Force et caractère</p>
-              </div>
-            </Link>
           </div>
         </div>
       </section>
