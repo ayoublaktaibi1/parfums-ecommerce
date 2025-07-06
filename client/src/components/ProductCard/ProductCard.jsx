@@ -1,3 +1,4 @@
+// src/components/ProductCard/ProductCard.jsx
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
@@ -26,8 +27,6 @@ const ProductCard = ({ product }) => {
       <Link to={`/product/${product.id}`} className="product-link">
         <div className="product-image">
           <img src={product.image} alt={product.name} />
-          {!product.inStock && <div className="out-of-stock-overlay">Rupture de stock</div>}
-          {product.featured && <div className="featured-badge">Coup de cœur</div>}
         </div>
         
         <div className="product-info">
@@ -46,11 +45,10 @@ const ProductCard = ({ product }) => {
       
       <div className="product-actions">
         <button 
-          className={`btn ${product.inStock ? 'btn-primary' : 'btn-secondary'}`}
+          className="btn btn-primary"
           onClick={handleQuickAdd}
-          disabled={!product.inStock}
         >
-          {product.inStock ? 'Ajouter au panier' : 'Indisponible'}
+          Ajouter au panier
         </button>
       </div>
     </div>

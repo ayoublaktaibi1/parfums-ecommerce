@@ -1,3 +1,4 @@
+// src/components/Footer/Footer.jsx
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Footer.css'
@@ -23,7 +24,6 @@ const Footer = () => {
               <li><Link to="/products">Tous les produits</Link></li>
               <li><Link to="/products?category=femme">Parfums Femme</Link></li>
               <li><Link to="/products?category=homme">Parfums Homme</Link></li>
-              <li><Link to="/products?category=unisexe">Parfums Unisexe</Link></li>
             </ul>
           </div>
 
@@ -33,7 +33,6 @@ const Footer = () => {
               <li><Link to="/products?type=ete">Parfums d'été</Link></li>
               <li><Link to="/products?type=hiver">Parfums d'hiver</Link></li>
               <li><Link to="/products?type=classique">Parfums classiques</Link></li>
-              <li><Link to="/products?featured=true">Coups de cœur</Link></li>
             </ul>
           </div>
 
@@ -50,15 +49,15 @@ const Footer = () => {
           <div className="footer-section">
             <h4>Contact</h4>
             <div className="contact-info">
-              <p>📞 +33 1 23 45 67 89</p>
-              <p>✉️ contact@parfumstore.com</p>
-              <p>📍 123 Rue des Parfums, 75001 Paris</p>
+              <p>📞 +212 6 12 34 56 78</p>
+              <p>✉️ contact@parfumstore.ma</p>
+              <p>📍 123 Avenue Mohammed V, Casablanca</p>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2024 ParfumStore. Tous droits réservés.</p>
+          <p>&copy; 2025 ParfumStore. Tous droits réservés.</p>
           <div className="footer-links">
             <a href="#privacy">Politique de confidentialité</a>
             <a href="#terms">Conditions d'utilisation</a>

@@ -76,7 +76,7 @@ const Home = () => {
       <section className="featured-products">
         <div className="container">
           <div className="section-header">
-            <h2>Nos coups de cœur</h2>
+            <h2>Nos parfums populaires</h2>
             <p>Découvrez notre sélection des parfums les plus populaires</p>
           </div>
           
@@ -157,16 +157,6 @@ const Home = () => {
               <div className="category-info">
                 <h3>Parfums Homme</h3>
                 <p>Force et caractère</p>
-              </div>
-            </Link>
-            
-            <Link to="/products?category=unisexe" className="category-card">
-              <div className="category-image">
-                <img src={categoryImages.unisexe} alt="Parfums Unisexe" />
-              </div>
-              <div className="category-info">
-                <h3>Parfums Unisexe</h3>
-                <p>Pour tous les goûts</p>
               </div>
             </Link>
           </div>

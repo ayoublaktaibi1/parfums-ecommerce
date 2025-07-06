@@ -1,7 +1,7 @@
+// src/pages/Products/Products.jsx
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../../components/ProductCard/ProductCard'
-import Filters from '../../components/Filters/Filters'
 import { parfums } from '../../data/mockData'
 import './Products.css'
 
@@ -11,14 +11,7 @@ const Products = () => {
   const [filteredProducts, setFilteredProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [sortBy, setSortBy] = useState('name')
-  const [filters, setFilters] = useState({
-    category: searchParams.get('category') || '',
-    type: searchParams.get('type') || '',
-    priceRange: '',
-    inStock: searchParams.get('inStock') === 'true',
-    featured: searchParams.get('featured') === 'true',
-    search: searchParams.get('search') || ''
-  })
+  const [searchTerm, setSearchTerm] = useState(searchParams.get('search') || '')
 
   useEffect(() => {
     // Simuler un appel API
@@ -32,41 +25,18 @@ const Products = () => {
     let filtered = [...products]
 
     // Filtrage par recherche
-    if (filters.search) {
+    if (searchTerm.trim()) {
       filtered = filtered.filter(product =>
-        product.name.toLowerCase().includes(filters.search.toLowerCase()) ||
-        product.brand.toLowerCase().includes(filters.search.toLowerCase())
+        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchTerm.toLowerCase())
       )
     }
 
-    // Filtrage par catégorie
-    if (filters.category) {
-      filtered = filtered.filter(product => product.category === filters.category)
-    }
-
-    // Filtrage par type
-    if (filters.type) {
-      filtered = filtered.filter(product => product.type === filters.type)
-    }
-
-    // Filtrage par prix
-    if (filters.priceRange) {
-      const [min, max] = filters.priceRange.split('-').map(Number)
-      if (max) {
-        filtered = filtered.filter(product => product.price >= min && product.price <= max)
-      } else {
-        filtered = filtered.filter(product => product.price >= min)
-      }
-    }
-
-    // Filtrage par stock
-    if (filters.inStock) {
-      filtered = filtered.filter(product => product.inStock)
-    }
-
-    // Filtrage par featured
-    if (filters.featured) {
-      filtered = filtered.filter(product => product.featured)
+    // Filtrage par catégorie depuis l'URL
+    const categoryParam = searchParams.get('category')
+    if (categoryParam && categoryParam !== 'unisexe') {
+      filtered = filtered.filter(product => product.category === categoryParam)
     }
 
     // Tri
@@ -86,32 +56,27 @@ const Products = () => {
     })
 
     setFilteredProducts(filtered)
-  }, [products, filters, sortBy])
+  }, [products, searchTerm, sortBy, searchParams])
 
-  const handleFilterChange = (newFilters) => {
-    setFilters(newFilters)
+  const handleSearchChange = (e) => {
+    const value = e.target.value
+    setSearchTerm(value)
     
     // Mettre à jour l'URL
-    const params = new URLSearchParams()
-    Object.entries(newFilters).forEach(([key, value]) => {
-      if (value && value !== '') {
-        params.set(key, value.toString())
-      }
-    })
+    const params = new URLSearchParams(searchParams)
+    if (value.trim()) {
+      params.set('search', value)
+    } else {
+      params.delete('search')
+    }
     setSearchParams(params)
   }
 
-  const clearFilters = () => {
-    const clearedFilters = {
-      category: '',
-      type: '',
-      priceRange: '',
-      inStock: false,
-      featured: false,
-      search: ''
-    }
-    setFilters(clearedFilters)
-    setSearchParams({})
+  const clearSearch = () => {
+    setSearchTerm('')
+    const params = new URLSearchParams(searchParams)
+    params.delete('search')
+    setSearchParams(params)
   }
 
   const getResultsText = () => {
@@ -119,6 +84,18 @@ const Products = () => {
     if (total === 0) return 'Aucun produit trouvé'
     if (total === 1) return '1 produit trouvé'
     return `${total} produits trouvés`
+  }
+
+  const getCategoryTitle = () => {
+    const category = searchParams.get('category')
+    switch (category) {
+      case 'femme':
+        return 'Parfums Femme'
+      case 'homme':
+        return 'Parfums Homme'
+      default:
+        return 'Nos Parfums'
+    }
   }
 
   if (loading) {
@@ -136,23 +113,42 @@ const Products = () => {
     <div className="products-page">
       <div className="container">
         <div className="page-header">
-          <h1>Nos Parfums</h1>
+          <h1>{getCategoryTitle()}</h1>
           <p>Découvrez notre collection complète de parfums de luxe</p>
         </div>
 
-        <div className="products-layout">
-          <aside className="filters-sidebar">
-            <Filters
-              filters={filters}
-              onFilterChange={handleFilterChange}
-              onClearFilters={clearFilters}
-            />
-          </aside>
+        <div className="products-content">
+          <div className="search-and-sort">
+            <div className="search-section">
+              <div className="search-bar">
+                <input
+                  type="text"
+                  placeholder="Rechercher un parfum, une marque..."
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                  className="search-input"
+                />
+                {searchTerm && (
+                  <button 
+                    onClick={clearSearch}
+                    className="clear-search-btn"
+                    title="Effacer la recherche"
+                  >
+                    ✕
+                  </button>
+                )}
+                <div className="search-icon">🔍</div>
+              </div>
+            </div>
 
-          <main className="products-main">
-            <div className="products-toolbar">
+            <div className="toolbar">
               <div className="results-info">
                 <span>{getResultsText()}</span>
+                {searchTerm && (
+                  <span className="search-info">
+                    pour "{searchTerm}"
+                  </span>
+                )}
               </div>
               
               <div className="sort-controls">
@@ -169,27 +165,33 @@ const Products = () => {
                 </select>
               </div>
             </div>
+          </div>
 
-            {filteredProducts.length === 0 ? (
-              <div className="no-products">
-                <div className="no-products-icon">🔍</div>
-                <h3>Aucun produit trouvé</h3>
-                <p>Essayez de modifier vos filtres ou votre recherche</p>
-                <button
-                  className="btn btn-primary"
-                  onClick={clearFilters}
-                >
-                  Effacer les filtres
-                </button>
-              </div>
-            ) : (
-              <div className="products-grid">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            )}
-          </main>
+          {filteredProducts.length === 0 ? (
+            <div className="no-products">
+              <div className="no-products-icon">🔍</div>
+              <h3>Aucun produit trouvé</h3>
+              {searchTerm ? (
+                <div>
+                  <p>Aucun résultat pour "{searchTerm}"</p>
+                  <button
+                    className="btn btn-primary"
+                    onClick={clearSearch}
+                  >
+                    Effacer la recherche
+                  </button>
+                </div>
+              ) : (
+                <p>Aucun produit disponible dans cette catégorie</p>
+              )}
+            </div>
+          ) : (
+            <div className="products-grid">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

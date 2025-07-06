@@ -10,7 +10,7 @@ export const parfums = [
     description: "Le parfum le plus iconique au monde, avec des notes florales aldéhydées.",
     category: "femme",
     type: "classique",
-    sizes: ["5ml", "10ml", "50ml", "100ml"],
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: true
   },
@@ -23,7 +23,7 @@ export const parfums = [
     description: "Un parfum frais et puissant avec des notes de bergamote et de poivre.",
     category: "homme",
     type: "ete",
-    sizes: ["5ml", "10ml", "60ml", "100ml"],
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: true
   },
@@ -36,7 +36,7 @@ export const parfums = [
     description: "Un parfum addictif avec des notes de café noir et de vanille.",
     category: "femme",
     type: "hiver",
-    sizes: ["5ml", "10ml", "30ml", "50ml", "90ml"],
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: false
   },
@@ -49,8 +49,8 @@ export const parfums = [
     description: "Un parfum minéral et végétal qui évoque la terre.",
     category: "homme",
     type: "classique",
-    sizes: ["5ml", "10ml", "50ml", "75ml"],
-    inStock: false,
+    sizes: ["5ml", "10ml", "20ml"],
+    inStock: true,
     featured: false
   },
   {
@@ -62,7 +62,7 @@ export const parfums = [
     description: "Un parfum gourmand avec des notes de praline et de vanille.",
     category: "femme",
     type: "ete",
-    sizes: ["5ml", "10ml", "30ml", "50ml", "75ml"],
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: true
   },
@@ -75,7 +75,7 @@ export const parfums = [
     description: "Un parfum aromatique boisé, frais et sensuel.",
     category: "homme",
     type: "ete",
-    sizes: ["5ml", "10ml", "50ml", "100ml"],
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: false
   },
@@ -88,7 +88,7 @@ export const parfums = [
     description: "Un parfum féminin et audacieux avec des notes de jasmin et de cacao.",
     category: "femme",
     type: "hiver",
-    sizes: ["5ml", "10ml", "30ml", "50ml", "80ml"],
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: false
   },
@@ -101,7 +101,7 @@ export const parfums = [
     description: "Un parfum aquatique frais et marin.",
     category: "homme",
     type: "ete",
-    sizes: ["5ml", "10ml", "50ml", "100ml"],
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: true
   },
@@ -114,7 +114,7 @@ export const parfums = [
     description: "Un parfum floral explosif avec des notes de jasmin et de rose.",
     category: "femme",
     type: "classique",
-    sizes: ["5ml", "10ml", "30ml", "50ml", "100ml"],
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: false
   },
@@ -127,33 +127,33 @@ export const parfums = [
     description: "Un parfum oriental épicé et sensuel.",
     category: "homme",
     type: "hiver",
-    sizes: ["5ml", "10ml", "50ml", "100ml"],
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: false
   },
   {
     id: 11,
-    name: "CK One",
-    brand: "Calvin Klein",
-    price: 45.99,
+    name: "Angel",
+    brand: "Mugler",
+    price: 89.99,
     image: "https://visionaryfragrances.com/cdn/shop/files/3F0A0524Large_1200x1200.jpg?v=1711563312",
-    description: "Un parfum unisexe frais et moderne.",
-    category: "unisexe",
-    type: "ete",
-    sizes: ["5ml", "10ml", "50ml", "100ml"],
+    description: "Un parfum gourmand iconique avec des notes de chocolat et de vanille.",
+    category: "femme",
+    type: "hiver",
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: false
   },
   {
     id: 12,
-    name: "Tom Ford Black Orchid",
-    brand: "Tom Ford",
-    price: 149.99,
+    name: "Invictus",
+    brand: "Paco Rabanne",
+    price: 79.99,
     image: "https://visionaryfragrances.com/cdn/shop/files/3F0A0524Large_1200x1200.jpg?v=1711563312",
-    description: "Un parfum unisexe luxueux et mystérieux.",
-    category: "unisexe",
-    type: "hiver",
-    sizes: ["5ml", "10ml", "30ml", "50ml"],
+    description: "Un parfum sportif et dynamique avec des notes fraîches et boisées.",
+    category: "homme",
+    type: "ete",
+    sizes: ["5ml", "10ml", "20ml"],
     inStock: true,
     featured: true
   }
@@ -187,7 +187,7 @@ export const packs = [
     price: 129.99,
     originalPrice: 159.99,
     image: "https://www.diamond-parfums.com/cdn/shop/files/unnamed_b52ba1f8-6b42-4ddf-985d-f512b9c74874.jpg?v=1730545061&width=533",
-    products: [2, 5, 8, 11],
+    products: [2, 5, 8, 12],
     category: "ete"
   }
 ]
@@ -209,7 +209,7 @@ export const promotions = [
     discount: 20,
     image: "https://media.gqmagazine.fr/photos/6866703c51d2273e233ad69a/16:9/w_1280,c_limit/parfum%20sous-co%CC%82te%CC%81es.jpg",
     validUntil: "2025-04-30",
-    products: [2, 6, 8, 11]
+    products: [2, 6, 8, 12]
   }
 ]
 
@@ -218,6 +218,5 @@ export const heroImage = "https://via.placeholder.com/800x500/667eea/ffffff?text
 
 export const categoryImages = {
   femme: "https://lawsonparis.com/wp-content/uploads/2022/02/Parfum-Lawson-Paris-Icone-8.jpg",
-  homme: "https://lawsonparis.com/wp-content/uploads/2022/02/Parfum-Lawson-Paris-Icone-8.jpg",
-  unisexe: "https://lawsonparis.com/wp-content/uploads/2022/02/Parfum-Lawson-Paris-Icone-8.jpg"
+  homme: "https://lawsonparis.com/wp-content/uploads/2022/02/Parfum-Lawson-Paris-Icone-8.jpg"
 }

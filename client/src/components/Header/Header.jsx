@@ -1,3 +1,4 @@
+// src/components/Header/Header.jsx
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../../context/CartContext'
@@ -43,7 +44,6 @@ const Header = () => {
               <li><Link to="/products" onClick={() => setIsMenuOpen(false)}>Produits</Link></li>
               <li><Link to="/products?category=femme" onClick={() => setIsMenuOpen(false)}>Femme</Link></li>
               <li><Link to="/products?category=homme" onClick={() => setIsMenuOpen(false)}>Homme</Link></li>
-              <li><Link to="/products?category=unisexe" onClick={() => setIsMenuOpen(false)}>Unisexe</Link></li>
             </ul>
           </nav>
 
