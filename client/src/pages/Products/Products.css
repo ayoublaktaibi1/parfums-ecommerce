@@ -1,3 +1,5 @@
+/* src/pages/Products/Products.css */
+
 .products-page {
   min-height: 100vh;
   padding: 2rem 0;
@@ -73,9 +75,10 @@
   min-width: 180px;
 }
 
+/* Page produits - 3 cartes par ligne sur desktop, 2 sur mobile */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
@@ -139,6 +142,11 @@
     grid-template-columns: 250px 1fr;
     gap: 2rem;
   }
+
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -167,7 +175,7 @@
   }
 
   .products-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
@@ -178,7 +186,8 @@
 
 @media (max-width: 480px) {
   .products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .page-header {
@@ -187,5 +196,18 @@
 
   .page-header h1 {
     font-size: 1.8rem;
+  }
+
+  .products-toolbar {
+    padding: 0.8rem;
+  }
+
+  .sort-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sort-controls select {
+    min-width: auto;
   }
 }

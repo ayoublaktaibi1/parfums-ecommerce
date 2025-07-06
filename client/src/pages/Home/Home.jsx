@@ -1,7 +1,8 @@
+// src/pages/Home/Home.jsx
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ProductCard from '../../components/ProductCard/ProductCard'
-import { parfums, packs, promotions, heroImage, categoryImages } from '../../data/mockData'
+import { parfums, packs, promotions, categoryImages } from '../../data/mockData'
 import './Home.css'
 
 const Home = () => {
@@ -10,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     // Charger les produits en vedette
-    const featured = parfums.filter(product => product.featured).slice(0, 6)
+    const featured = parfums.filter(product => product.featured).slice(0, 8)
     setFeaturedProducts(featured)
 
     // Carrousel automatique pour les promotions
@@ -30,23 +31,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-content">
-          <h1>Découvrez l'univers des parfums</h1>
-          <p>
-            Collection exclusive des plus grandes marques de parfumerie. 
-            Livraison gratuite et paiement à la livraison.
-          </p>
-          <Link to="/products" className="btn btn-primary hero-btn">
-            Découvrir nos parfums
-          </Link>
-        </div>
-        <div className="hero-image">
-          <img src={heroImage} alt="Collection de parfums" />
-        </div>
-      </section>
-
       {/* Promotions Carousel */}
       {promotions.length > 0 && (
         <section className="promotions">
@@ -158,7 +142,7 @@ const Home = () => {
           <div className="categories-grid">
             <Link to="/products?category=femme" className="category-card">
               <div className="category-image">
-                <img src="/images/categories/femme.jpg" alt="Parfums Femme" />
+                <img src={categoryImages.femme} alt="Parfums Femme" />
               </div>
               <div className="category-info">
                 <h3>Parfums Femme</h3>
@@ -168,7 +152,7 @@ const Home = () => {
             
             <Link to="/products?category=homme" className="category-card">
               <div className="category-image">
-                <img src="/images/categories/homme.jpg" alt="Parfums Homme" />
+                <img src={categoryImages.homme} alt="Parfums Homme" />
               </div>
               <div className="category-info">
                 <h3>Parfums Homme</h3>
@@ -178,7 +162,7 @@ const Home = () => {
             
             <Link to="/products?category=unisexe" className="category-card">
               <div className="category-image">
-                <img src="/images/categories/unisexe.jpg" alt="Parfums Unisexe" />
+                <img src={categoryImages.unisexe} alt="Parfums Unisexe" />
               </div>
               <div className="category-info">
                 <h3>Parfums Unisexe</h3>
