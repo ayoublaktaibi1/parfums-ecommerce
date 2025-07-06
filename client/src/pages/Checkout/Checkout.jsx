@@ -329,12 +329,16 @@ const Checkout = () => {
             </div>
 
             <div className="payment-info">
-              <h4>💳 Paiement à la livraison</h4>
+              <h4>
+                <i className="fas fa-credit-card"></i> Paiement à la livraison
+              </h4>
               <p>Vous paierez en espèces lors de la réception de votre commande.</p>
             </div>
 
             <div className="delivery-info">
-              <h4>🚚 Livraison gratuite</h4>
+              <h4>
+                <i className="fas fa-truck"></i> Livraison gratuite
+              </h4>
               <p>Livraison sous 2-3 jours ouvrés partout au Maroc.</p>
             </div>
           </div>

@@ -55,7 +55,7 @@
   position: absolute;
   top: 15px;
   right: 15px;
-  background-color: #e74c3c;
+  background-color: var(--label-color);
   color: var(--white);
   padding: 0.5rem 0.8rem;
   border-radius: 25px;
@@ -105,24 +105,26 @@
 .pack-price {
   font-size: 1.3rem;
   font-weight: bold;
-  color: #D4AF37;
+  color: var(--secondary-color);
 }
 
 .add-to-cart-btn {
   width: 100%;
   padding: 0.9rem 1rem;
-  background-color: #1a1a1a;
-  color: white;
+  background-color: var(--black);
+  color: var(--white);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 500;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .add-to-cart-btn:hover {
-  background-color: #333333;
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(31, 43, 143, 0.3);
 }
 
 /* Sections communes */
@@ -156,7 +158,7 @@
 
 /* Promotions Carousel */
 .promotions {
-  background-color: var(--secondary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: var(--white);
   padding: 3rem 0;
   position: relative;
@@ -199,7 +201,7 @@
 
 .discount-badge {
   display: inline-block;
-  background-color: var(--accent-color);
+  background: var(--label-color);
   color: var(--white);
   padding: 0.5rem 1rem;
   border-radius: 25px;
@@ -239,7 +241,7 @@
 /* Features Section */
 .features-section {
   padding: 4rem 0;
-  background-color: var(--primary-color);
+  background-color: var(--black);
   color: var(--white);
 }
 

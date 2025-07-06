@@ -25,7 +25,7 @@
 }
 
 .logo a:hover h1 {
-  color: #D4AF37;
+  color: var(--secondary-color);
 }
 
 .header-right {
@@ -53,7 +53,7 @@
 }
 
 .nav-list a:hover {
-  color: #D4AF37;
+  color: var(--secondary-color);
   background-color: var(--background-color);
   transform: translateY(-2px);
 }
@@ -65,7 +65,7 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background-color: #D4AF37;
+  background-color: var(--secondary-color);
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -100,8 +100,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #D4AF37;
-  color: white;
+  background: var(--label-color);
+  color: var(--white);
   border-radius: 50%;
   width: 20px;
   height: 20px;

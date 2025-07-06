@@ -17,7 +17,9 @@ const OrderSuccess = () => {
     <div className="order-success-page">
       <div className="container">
         <div className="success-content">
-          <div className="success-icon">✅</div>
+          <div className="success-icon">
+            <i className="fas fa-check-circle"></i>
+          </div>
           
           <h1>Commande confirmée !</h1>
           
@@ -44,7 +46,9 @@ const OrderSuccess = () => {
           </div>
 
           <div className="delivery-info">
-            <h4>📦 Informations de livraison</h4>
+            <h4>
+              <i className="fas fa-box"></i> Informations de livraison
+            </h4>
             <ul>
               <li>Livraison gratuite partout au Maroc</li>
               <li>Délai de livraison : 2-3 jours ouvrés</li>
@@ -96,8 +100,8 @@ const OrderSuccess = () => {
             <p>
               Une question sur votre commande ? 
               <br />
-              Contactez-nous au <strong>+33 1 23 45 67 89</strong> 
-              ou par email : <strong>contact@parfumstore.com</strong>
+              Contactez-nous au <strong>+212 6 12 34 56 78</strong> 
+              ou par email : <strong>contact@parfumstore.ma</strong>
             </p>
           </div>
         </div>

@@ -117,10 +117,12 @@ const Products = () => {
                     className="clear-search-btn"
                     title="Effacer la recherche"
                   >
-                    ✕
+                    <i className="fas fa-times"></i>
                   </button>
                 )}
-                <div className="search-icon">🔍</div>
+                <div className="search-icon">
+                  <i className="fas fa-search"></i>
+                </div>
               </div>
             </div>
 
@@ -142,7 +144,9 @@ const Products = () => {
 
           {filteredProducts.length === 0 ? (
             <div className="no-products">
-              <div className="no-products-icon">🔍</div>
+              <div className="no-products-icon">
+                <i className="fas fa-search"></i>
+              </div>
               <h3>Aucun produit trouvé</h3>
               {searchTerm ? (
                 <div>

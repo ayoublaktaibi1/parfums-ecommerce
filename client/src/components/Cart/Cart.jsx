@@ -25,7 +25,9 @@ const Cart = ({ onClose }) => {
     <div className="cart-sidebar">
       <div className="cart-header">
         <h2>Panier</h2>
-        <button className="close-btn" onClick={onClose}>×</button>
+        <button className="close-btn" onClick={onClose}>
+          <i className="fas fa-times"></i>
+        </button>
       </div>
 
       <div className="cart-content">
@@ -57,13 +59,13 @@ const Cart = ({ onClose }) => {
                       <button
                         onClick={() => handleQuantityChange(item, item.quantity - 1)}
                       >
-                        -
+                        <i className="fas fa-minus"></i>
                       </button>
                       <span>{item.quantity}</span>
                       <button
                         onClick={() => handleQuantityChange(item, item.quantity + 1)}
                       >
-                        +
+                        <i className="fas fa-plus"></i>
                       </button>
                     </div>
                     
@@ -71,7 +73,7 @@ const Cart = ({ onClose }) => {
                       className="remove-btn"
                       onClick={() => removeFromCart(item.id, item.size)}
                     >
-                      🗑️
+                      <i className="fas fa-trash"></i>
                     </button>
                   </div>
                 </div>

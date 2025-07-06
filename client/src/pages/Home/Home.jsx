@@ -136,25 +136,33 @@ const Home = () => {
         <div className="container">
           <div className="features-grid">
             <div className="feature-card">
-              <div className="feature-icon">🚚</div>
+              <div className="feature-icon">
+                <i className="fas fa-shipping-fast"></i>
+              </div>
               <h3>Livraison gratuite</h3>
               <p>Livraison gratuite pour toutes les commandes</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">💳</div>
+              <div className="feature-icon">
+                <i className="fas fa-credit-card"></i>
+              </div>
               <h3>Paiement à la livraison</h3>
               <p>Payez en toute sécurité à la réception</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">🔄</div>
+              <div className="feature-icon">
+                <i className="fas fa-undo"></i>
+              </div>
               <h3>Retour gratuit</h3>
               <p>Retour sous 14 jours si non satisfait</p>
             </div>
             
             <div className="feature-card">
-              <div className="feature-icon">⭐</div>
+              <div className="feature-icon">
+                <i className="fas fa-star"></i>
+              </div>
               <h3>Qualité garantie</h3>
               <p>Produits authentiques des grandes marques</p>
             </div>

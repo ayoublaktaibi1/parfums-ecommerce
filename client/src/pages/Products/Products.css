@@ -1,5 +1,3 @@
-/* src/pages/Products/Products.css */
-
 .products-page {
   min-height: 100vh;
   padding: 2rem 0;
@@ -55,7 +53,7 @@
 .search-input:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+  box-shadow: 0 0 0 3px rgba(31, 43, 143, 0.1);
 }
 
 .search-icon {
@@ -136,6 +134,7 @@
 .no-products-icon {
   font-size: 4rem;
   margin-bottom: 1rem;
+  color: var(--text-light);
 }
 
 .no-products h3 {

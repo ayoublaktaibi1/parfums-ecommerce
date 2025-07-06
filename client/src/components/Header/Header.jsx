@@ -19,49 +19,60 @@ const Header = () => {
   }
 
   return (
-    <header className="header">
-      <div className="container">
-        <div className="header-content">
-          <div className="logo">
-            <Link to="/">
-              <h1>ParfumStore</h1>
-            </Link>
-          </div>
+    <>
+      {/* FontAwesome CDN */}
+      <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
+      />
+      
+      <header className="header">
+        <div className="container">
+          <div className="header-content">
+            <div className="logo">
+              <Link to="/">
+                <h1>ParfumStore</h1>
+              </Link>
+            </div>
 
-          <div className="header-right">
-            <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
-              <ul className="nav-list">
-                <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Accueil</Link></li>
-                <li><Link to="/products" onClick={() => setIsMenuOpen(false)}>Produits</Link></li>
-                <li><Link to="/products?category=femme" onClick={() => setIsMenuOpen(false)}>Femme</Link></li>
-                <li><Link to="/products?category=homme" onClick={() => setIsMenuOpen(false)}>Homme</Link></li>
-              </ul>
-            </nav>
+            <div className="header-right">
+              <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
+                <ul className="nav-list">
+                  <li><Link to="/" onClick={() => setIsMenuOpen(false)}>Accueil</Link></li>
+                  <li><Link to="/products" onClick={() => setIsMenuOpen(false)}>Produits</Link></li>
+                  <li><Link to="/products?category=femme" onClick={() => setIsMenuOpen(false)}>Femme</Link></li>
+                  <li><Link to="/products?category=homme" onClick={() => setIsMenuOpen(false)}>Homme</Link></li>
+                </ul>
+              </nav>
 
-            <div className="header-actions">
-              <button className="cart-btn" onClick={toggleCart}>
-                <span className="cart-icon">🛒</span>
-                {getTotalItems() > 0 && (
-                  <span className="cart-count">{getTotalItems()}</span>
-                )}
-              </button>
+              <div className="header-actions">
+                <button className="cart-btn" onClick={toggleCart}>
+                  <i className="fas fa-shopping-cart"></i>
+                  {getTotalItems() > 0 && (
+                    <span className="cart-count">{getTotalItems()}</span>
+                  )}
+                </button>
 
-              <button className="menu-toggle" onClick={toggleMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </button>
+                <button className="menu-toggle" onClick={toggleMenu}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {isCartOpen && (
-        <div className="cart-overlay">
-          <Cart onClose={toggleCart} />
-        </div>
-      )}
-    </header>
+        {isCartOpen && (
+          <div className="cart-overlay">
+            <Cart onClose={toggleCart} />
+          </div>
+        )}
+      </header>
+    </>
   )
 }
 

@@ -19,6 +19,7 @@
 .success-icon {
   font-size: 4rem;
   margin-bottom: 1.5rem;
+  color: #28a745;
 }
 
 .success-content h1 {
@@ -69,6 +70,11 @@
   color: #28a745;
   margin-bottom: 1rem;
   text-align: center;
+  font-size: 1.2rem;
+}
+
+.delivery-info h4 i {
+  margin-right: 0.5rem;
 }
 
 .delivery-info ul {
@@ -84,11 +90,13 @@
 }
 
 .delivery-info li::before {
-  content: "✓";
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
   position: absolute;
   left: 0;
   color: #28a745;
-  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .next-steps {

@@ -14,8 +14,12 @@ const Footer = () => {
 
           <div className="footer-contact">
             <h4>Contact</h4>
-            <p>📞 +212 6 12 34 56 78</p>
-            <p>✉️ contact@parfumstore.ma</p>
+            <p>
+              <i className="fas fa-phone"></i> +212 6 12 34 56 78
+            </p>
+            <p>
+              <i className="fas fa-envelope"></i> contact@parfumstore.ma
+            </p>
           </div>
 
           <div className="footer-links">

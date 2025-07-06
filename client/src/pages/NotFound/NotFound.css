@@ -73,6 +73,7 @@
 .suggestion-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
 .suggestion-card h4 {
@@ -88,7 +89,7 @@
 }
 
 .help-section {
-  background-color: var(--primary-color);
+  background-color: var(--black);
   color: var(--white);
   padding: 2rem;
   border-radius: var(--border-radius);

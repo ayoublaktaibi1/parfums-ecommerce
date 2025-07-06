@@ -1,20 +1,22 @@
 :root {
-  /* Palette de couleurs luxueuse */
-  --primary-color: #1a1a1a;        /* Noir profond élégant */
-  --secondary-color: #D4AF37;       /* Or luxueux */
-  --accent-color: #F5F5DC;          /* Beige crème doux */
+  /* Palette de couleurs moderne pour parfums */
+  --primary-color: #1f2b8f;        /* Violet profond élégant */
+  --secondary-color: #88421d;       /* Brun chaud choisi */
+  --accent-color: #4ecdc4;          /* Turquoise rafraîchi */
+  --label-color: #e74c3c;           /* Rouge pour les étiquettes */
   
   /* Couleurs de texte */
-  --text-color: #1a1a1a;
-  --text-light: #666666;
+  --text-color: #2c3e50;
+  --text-light: #7f8c8d;
   
   /* Couleurs de fond */
-  --background-color: #FAFAFA;      /* Blanc cassé très subtil */
+  --background-color: #f8f9fa;      /* Gris très clair */
   --white: #ffffff;
+  --black: #000000;
   
   /* Effets */
-  --shadow: 0 2px 15px rgba(26, 26, 26, 0.08);
-  --border-radius: 8px;
+  --shadow: 0 4px 20px rgba(31, 43, 143, 0.1);
+  --border-radius: 12px;
 }
 
 * {

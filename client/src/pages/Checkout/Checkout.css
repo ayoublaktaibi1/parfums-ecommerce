@@ -86,11 +86,11 @@
 }
 
 .form-group input.error {
-  border-color: var(--secondary-color);
+  border-color: var(--label-color);
 }
 
 .error-message {
-  color: var(--secondary-color);
+  color: var(--label-color);
   font-size: 0.9rem;
   margin-top: 0.25rem;
   display: block;

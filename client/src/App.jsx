@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './App.css'
 import { CartProvider } from './context/CartContext'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -9,7 +10,6 @@ import ProductDetail from './components/ProductDetail/ProductDetail'
 import Checkout from './pages/Checkout/Checkout'
 import OrderSuccess from './pages/OrderSuccess/OrderSuccess'
 import NotFound from './pages/NotFound/NotFound'
-import './App.css'
 
 function App() {
   return (
