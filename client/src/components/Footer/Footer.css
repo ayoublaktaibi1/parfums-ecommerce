@@ -37,14 +37,14 @@
 
 .footer-links h4 {
   color: var(--white);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
   font-size: 1.1rem;
 }
 
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .footer-links a {

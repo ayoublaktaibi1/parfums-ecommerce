@@ -32,7 +32,7 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (product && selectedSize && product.inStock) {
       addToCart(product, selectedSize, quantity)
-      alert('Produit ajouté au panier !')
+      // Retrait de l'alerte
     }
   }
 
@@ -110,22 +110,15 @@ const ProductDetail = () => {
                       onClick={() => setQuantity(Math.max(1, quantity - 1))}
                       disabled={quantity <= 1}
                     >
-                      -
+                      <i className="fas fa-minus"></i>
                     </button>
-                    <input
-                      type="number"
-                      id="quantity"
-                      min="1"
-                      max="10"
-                      value={quantity}
-                      onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                    />
+                    <span>{quantity}</span>
                     <button
                       type="button"
                       onClick={() => setQuantity(Math.min(10, quantity + 1))}
                       disabled={quantity >= 10}
                     >
-                      +
+                      <i className="fas fa-plus"></i>
                     </button>
                   </div>
                 </div>

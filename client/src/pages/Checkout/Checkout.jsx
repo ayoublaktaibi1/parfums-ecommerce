@@ -9,12 +9,9 @@ const Checkout = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
-    email: '',
     phone: '',
     address: '',
-    city: '',
-    postalCode: '',
-    notes: ''
+    city: ''
   })
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -53,12 +50,6 @@ const Checkout = () => {
       newErrors.lastName = 'Le nom est requis'
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'L\'email est requis'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Format d\'email invalide'
-    }
-
     if (!formData.phone.trim()) {
       newErrors.phone = 'Le téléphone est requis'
     }
@@ -69,12 +60,6 @@ const Checkout = () => {
 
     if (!formData.city.trim()) {
       newErrors.city = 'La ville est requise'
-    }
-
-    if (!formData.postalCode.trim()) {
-      newErrors.postalCode = 'Le code postal est requis'
-    } else if (!/^\d{5}$/.test(formData.postalCode)) {
-      newErrors.postalCode = 'Code postal invalide (5 chiffres)'
     }
 
     return newErrors
@@ -179,32 +164,17 @@ const Checkout = () => {
                   </div>
                 </div>
 
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="email">Email *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className={errors.email ? 'error' : ''}
-                    />
-                    {errors.email && <span className="error-message">{errors.email}</span>}
-                  </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="phone">Téléphone *</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className={errors.phone ? 'error' : ''}
-                    />
-                    {errors.phone && <span className="error-message">{errors.phone}</span>}
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="phone">Téléphone *</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className={errors.phone ? 'error' : ''}
+                  />
+                  {errors.phone && <span className="error-message">{errors.phone}</span>}
                 </div>
               </div>
 
@@ -224,54 +194,24 @@ const Checkout = () => {
                   {errors.address && <span className="error-message">{errors.address}</span>}
                 </div>
 
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="city">Ville *</label>
-                    <input
-                      type="text"
-                      id="city"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleInputChange}
-                      className={errors.city ? 'error' : ''}
-                    />
-                    {errors.city && <span className="error-message">{errors.city}</span>}
-                  </div>
-                  
-                  <div className="form-group">
-                    <label htmlFor="postalCode">Code postal *</label>
-                    <input
-                      type="text"
-                      id="postalCode"
-                      name="postalCode"
-                      value={formData.postalCode}
-                      onChange={handleInputChange}
-                      className={errors.postalCode ? 'error' : ''}
-                    />
-                    {errors.postalCode && <span className="error-message">{errors.postalCode}</span>}
-                  </div>
-                </div>
-              </div>
-
-              <div className="form-section">
-                <h3>Notes (optionnel)</h3>
                 <div className="form-group">
-                  <label htmlFor="notes">Instructions de livraison</label>
-                  <textarea
-                    id="notes"
-                    name="notes"
-                    value={formData.notes}
+                  <label htmlFor="city">Ville *</label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    value={formData.city}
                     onChange={handleInputChange}
-                    rows="3"
-                    placeholder="Étage, digicode, instructions particulières..."
+                    className={errors.city ? 'error' : ''}
                   />
+                  {errors.city && <span className="error-message">{errors.city}</span>}
                 </div>
               </div>
 
               <div className="form-actions">
                 <button
                   type="button"
-                  className="btn btn-secondary"
+                  className="btn btn-retour"
                   onClick={() => navigate(-1)}
                   disabled={isSubmitting}
                 >
@@ -280,7 +220,7 @@ const Checkout = () => {
                 
                 <button
                   type="submit"
-                  className="btn btn-success"
+                  className="btn btn-finaliser"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Envoi en cours...' : 'Confirmer la commande'}
@@ -300,9 +240,7 @@ const Checkout = () => {
                   </div>
                   
                   <div className="item-details">
-                    <h4>{item.name}</h4>
-                    <p>{item.brand}</p>
-                    <p>Taille: {item.size}</p>
+                    <h4>{item.name} - {item.size}</h4>
                     <p>Quantité: {item.quantity}</p>
                   </div>
                   
@@ -335,11 +273,18 @@ const Checkout = () => {
               <p>Vous paierez en espèces lors de la réception de votre commande.</p>
             </div>
 
-            <div className="delivery-info">
+            <div className="payment-info">
               <h4>
-                <i className="fas fa-truck"></i> Livraison gratuite
+                <i className="fas fa-truck"></i> Livraison
               </h4>
-              <p>Livraison sous 2-3 jours ouvrés partout au Maroc.</p>
+              <p>Livraison à domicile dans 48H ouvrées partout au Maroc.</p>
+            </div>
+
+            <div className="payment-info">
+              <h4>
+                <i className="fas fa-undo"></i> Retour
+              </h4>
+              <p>Retour dans les 3 jours et échange dans les 7 jours à compter de la date d'achat.</p>
             </div>
           </div>
         </div>

@@ -33,7 +33,7 @@ const ProductCard = ({ product, selectedSize }) => {
         </div>
         
         <div className="product-info">
-          <h3 className="product-name">{product.name} - {currentSize}</h3>
+          <h3 className="card-product-name">{product.name} - {currentSize}</h3>
           <div className="product-pricing">
             {product.originalPrice ? (
               <>

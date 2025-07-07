@@ -9,7 +9,13 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-brand">
             <h3>ParfumStore</h3>
-            <p>Votre boutique en ligne de parfums de luxe</p>
+            <p>Votre boutique en ligne de parfums originaux</p>
+          </div>
+
+          <div className="footer-links">
+            <h4>Informations</h4>
+            <a href="#privacy">Politique de confidentialité</a>
+            <a href="#terms">Conditions d'utilisation</a>
           </div>
 
           <div className="footer-contact">
@@ -20,12 +26,6 @@ const Footer = () => {
             <p>
               <i className="fas fa-envelope"></i> contact@parfumstore.ma
             </p>
-          </div>
-
-          <div className="footer-links">
-            <h4>Informations</h4>
-            <a href="#privacy">Politique de confidentialité</a>
-            <a href="#terms">Conditions d'utilisation</a>
           </div>
         </div>
 

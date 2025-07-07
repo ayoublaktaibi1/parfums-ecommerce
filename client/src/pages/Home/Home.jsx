@@ -45,12 +45,6 @@ const Home = () => {
                     <h2>{promo.title}</h2>
                     <p>{promo.description}</p>
                     <span className="discount-badge">-{promo.discount}%</span>
-                    <Link
-                      to="/products"
-                      className="btn btn-secondary"
-                    >
-                      Voir les offres
-                    </Link>
                   </div>
                   <div className="promotion-image">
                     <img src={promo.image} alt={promo.title} />
@@ -125,7 +119,7 @@ const Home = () => {
           
           <div className="section-footer">
             <Link to="/products" className="btn btn-primary">
-              Voir tous les produits
+              Voir tous les parfums
             </Link>
           </div>
         </div>
@@ -139,8 +133,8 @@ const Home = () => {
               <div className="feature-icon">
                 <i className="fas fa-shipping-fast"></i>
               </div>
-              <h3>Livraison gratuite</h3>
-              <p>Livraison gratuite pour toutes les commandes</p>
+              <h3>Livraison rapide</h3>
+              <p>Livraison rapide partout au Maroc</p>
             </div>
             
             <div className="feature-card">
@@ -148,7 +142,7 @@ const Home = () => {
                 <i className="fas fa-credit-card"></i>
               </div>
               <h3>Paiement à la livraison</h3>
-              <p>Payez en toute sécurité à la réception</p>
+              <p>Payez votre commande à la réception</p>
             </div>
             
             <div className="feature-card">

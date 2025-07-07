@@ -97,7 +97,7 @@ const Products = () => {
       <div className="container">
         <div className="page-header">
           <h1>{getCategoryTitle()}</h1>
-          <p>Découvrez notre collection complète de parfums de luxe</p>
+          <p>Découvrez notre collection complète de parfums originaux</p>
         </div>
 
         <div className="products-content">

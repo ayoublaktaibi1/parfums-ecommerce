@@ -4,21 +4,13 @@ import { useCart } from '../../context/CartContext'
 import './Cart.css'
 
 const Cart = ({ onClose }) => {
-  const { items, removeFromCart, updateQuantity, getTotalPrice, clearCart } = useCart()
+  const { items, removeFromCart, getTotalPrice, clearCart } = useCart()
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat('fr-FR', {
       style: 'currency',
       currency: 'EUR'
     }).format(price)
-  }
-
-  const handleQuantityChange = (item, newQuantity) => {
-    if (newQuantity <= 0) {
-      removeFromCart(item.id, item.size)
-    } else {
-      updateQuantity(item.id, item.size, newQuantity)
-    }
   }
 
   return (
@@ -48,27 +40,12 @@ const Cart = ({ onClose }) => {
                   </div>
                   
                   <div className="item-details">
-                    <h4>{item.name}</h4>
-                    <p className="item-brand">{item.brand}</p>
-                    <p className="item-size">Taille: {item.size}</p>
+                    <h4 className="item-title">{item.name} - {item.size}</h4>
+                    <p className="item-quantity">Quantité: {item.quantity}</p>
                     <p className="item-price">{formatPrice(item.price)}</p>
                   </div>
                   
                   <div className="item-controls">
-                    <div className="quantity-controls">
-                      <button
-                        onClick={() => handleQuantityChange(item, item.quantity - 1)}
-                      >
-                        <i className="fas fa-minus"></i>
-                      </button>
-                      <span>{item.quantity}</span>
-                      <button
-                        onClick={() => handleQuantityChange(item, item.quantity + 1)}
-                      >
-                        <i className="fas fa-plus"></i>
-                      </button>
-                    </div>
-                    
                     <button
                       className="remove-btn"
                       onClick={() => removeFromCart(item.id, item.size)}
@@ -87,7 +64,7 @@ const Cart = ({ onClose }) => {
               
               <div className="cart-actions">
                 <button
-                  className="btn btn-secondary"
+                  className="btn btn-vider-panier"
                   onClick={clearCart}
                 >
                   Vider le panier
@@ -95,7 +72,7 @@ const Cart = ({ onClose }) => {
                 
                 <Link
                   to="/checkout"
-                  className="btn btn-success"
+                  className="btn btn-commander"
                   onClick={onClose}
                 >
                   Commander
