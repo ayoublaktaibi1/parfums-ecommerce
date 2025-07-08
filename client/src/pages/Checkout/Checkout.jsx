@@ -17,10 +17,15 @@ const Checkout = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR'
-    }).format(price)
+    return `${Math.round(price)} MAD`
+  }
+
+  const getDeliveryFee = () => {
+    return 35 // Frais de livraison en MAD
+  }
+
+  const getTotalWithDelivery = () => {
+    return getTotalPrice() + getDeliveryFee()
   }
 
   const handleInputChange = (e) => {
@@ -81,7 +86,9 @@ const Checkout = () => {
       const order = {
         id: Date.now(),
         items,
-        total: getTotalPrice(),
+        subtotal: getTotalPrice(),
+        deliveryFee: getDeliveryFee(),
+        total: getTotalWithDelivery(),
         customer: formData,
         status: 'en_attente',
         createdAt: new Date().toISOString(),
@@ -109,6 +116,9 @@ const Checkout = () => {
     return (
       <div className="container">
         <div className="empty-checkout">
+          <div className="empty-cart-icon">
+            <i className="fas fa-shopping-bag"></i>
+          </div>
           <h2>Votre panier est vide</h2>
           <p>Ajoutez des produits à votre panier pour passer commande.</p>
           <button
@@ -258,11 +268,11 @@ const Checkout = () => {
               </div>
               <div className="total-line">
                 <span>Livraison:</span>
-                <span>Gratuite</span>
+                <span>{formatPrice(getDeliveryFee())}</span>
               </div>
               <div className="total-line final-total">
                 <span>Total:</span>
-                <span>{formatPrice(getTotalPrice())}</span>
+                <span>{formatPrice(getTotalWithDelivery())}</span>
               </div>
             </div>
 

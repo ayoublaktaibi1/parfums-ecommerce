@@ -1,60 +1,24 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './OrderSuccess.css'
 
 const OrderSuccess = () => {
-  const location = useLocation()
-  const { orderId, total } = location.state || {}
-
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR'
-    }).format(price)
-  }
-
   return (
     <div className="order-success-page">
       <div className="container">
         <div className="success-content">
           <div className="success-icon">
-            <i className="fas fa-check-circle"></i>
+            <i className="far fa-check-circle"></i>
           </div>
           
-          <h1>Commande confirmée !</h1>
-          
-          <div className="order-details">
-            {orderId && (
-              <p className="order-number">
-                Numéro de commande : <strong>#{orderId}</strong>
-              </p>
-            )}
-            
-            {total && (
-              <p className="order-total">
-                Montant total : <strong>{formatPrice(total)}</strong>
-              </p>
-            )}
-          </div>
+          <h1>Merci pour votre commande !</h1>
 
           <div className="success-message">
-            <h3>Merci pour votre commande !</h3>
+            <h3>Votre commande a été enregistrée avec succès</h3>
             <p>
-              Votre commande a été enregistrée avec succès. 
-              Vous recevrez un email de confirmation sous peu.
+              Nous allons traiter votre commande dans les plus brefs délais. 
+              Vous recevrez un appel de confirmation sous peu.
             </p>
-          </div>
-
-          <div className="delivery-info">
-            <h4>
-              <i className="fas fa-box"></i> Informations de livraison
-            </h4>
-            <ul>
-              <li>Livraison gratuite partout au Maroc</li>
-              <li>Délai de livraison : 2-3 jours ouvrés</li>
-              <li>Paiement à la livraison en espèces</li>
-              <li>Possibilité de retour sous 14 jours</li>
-            </ul>
           </div>
 
           <div className="next-steps">
@@ -101,7 +65,7 @@ const OrderSuccess = () => {
               Une question sur votre commande ? 
               <br />
               Contactez-nous au <strong>+212 6 12 34 56 78</strong> 
-              ou par email : <strong>contact@parfumstore.ma</strong>
+              ou par email : <strong>contact@AzoulParfum.ma</strong>
             </p>
           </div>
         </div>

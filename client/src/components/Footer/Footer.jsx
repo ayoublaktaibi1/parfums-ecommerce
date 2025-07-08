@@ -1,5 +1,6 @@
 // src/components/Footer/Footer.jsx
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './Footer.css'
 
 const Footer = () => {
@@ -8,14 +9,14 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-brand">
-            <h3>ParfumStore</h3>
+            <h3>AzoulParfum</h3>
             <p>Votre boutique en ligne de parfums originaux</p>
           </div>
 
           <div className="footer-links">
             <h4>Informations</h4>
-            <a href="#privacy">Politique de confidentialité</a>
-            <a href="#terms">Conditions d'utilisation</a>
+            <Link to="/terms">Conditions d'utilisation</Link>
+            <Link to="/privacy">Politique de confidentialité</Link>
           </div>
 
           <div className="footer-contact">
@@ -24,13 +25,13 @@ const Footer = () => {
               <i className="fas fa-phone"></i> +212 6 12 34 56 78
             </p>
             <p>
-              <i className="fas fa-envelope"></i> contact@parfumstore.ma
+              <i className="fas fa-envelope"></i> contact@AzoulParfum.ma
             </p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2025 ParfumStore. Tous droits réservés.</p>
+          <p>&copy; 2025 AzoulParfum. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

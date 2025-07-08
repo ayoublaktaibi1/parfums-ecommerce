@@ -7,10 +7,7 @@ const Cart = ({ onClose }) => {
   const { items, removeFromCart, getTotalPrice, clearCart } = useCart()
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR'
-    }).format(price)
+    return `${Math.round(price)} MAD`
   }
 
   return (
@@ -42,15 +39,15 @@ const Cart = ({ onClose }) => {
                   <div className="item-details">
                     <h4 className="item-title">{item.name} - {item.size}</h4>
                     <p className="item-quantity">Quantité: {item.quantity}</p>
-                    <p className="item-price">{formatPrice(item.price)}</p>
                   </div>
                   
                   <div className="item-controls">
+                    <p className="item-price">{formatPrice(item.price * item.quantity)}</p>
                     <button
                       className="remove-btn"
                       onClick={() => removeFromCart(item.id, item.size)}
                     >
-                      <i className="fas fa-trash"></i>
+                      <i className="fas fa-trash-alt"></i>
                     </button>
                   </div>
                 </div>

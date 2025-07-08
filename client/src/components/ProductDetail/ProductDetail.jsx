@@ -32,15 +32,11 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (product && selectedSize && product.inStock) {
       addToCart(product, selectedSize, quantity)
-      // Retrait de l'alerte
     }
   }
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR'
-    }).format(price)
+    return `${Math.round(price)} MAD`
   }
 
   if (loading) {

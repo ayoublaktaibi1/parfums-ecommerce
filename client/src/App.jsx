@@ -8,6 +8,8 @@ import Products from './pages/Products/Products'
 import ProductDetail from './components/ProductDetail/ProductDetail'
 import Checkout from './pages/Checkout/Checkout'
 import OrderSuccess from './pages/OrderSuccess/OrderSuccess'
+import Terms from './pages/Terms/Terms'
+import Privacy from './pages/Privacy/Privacy'
 import NotFound from './pages/NotFound/NotFound'
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
               <Route path="/product/:id" element={<ProductDetail />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/order-success" element={<OrderSuccess />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

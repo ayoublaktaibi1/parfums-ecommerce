@@ -18,6 +18,17 @@ const Header = () => {
     setIsCartOpen(!isCartOpen)
   }
 
+  const closeCart = () => {
+    setIsCartOpen(false)
+  }
+
+  // Fermer le panier en cliquant sur l'overlay
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      closeCart()
+    }
+  }
+
   return (
     <>
       {/* FontAwesome CDN */}
@@ -34,7 +45,7 @@ const Header = () => {
           <div className="header-content">
             <div className="logo">
               <Link to="/">
-                <h1>ParfumStore</h1>
+                <h1>AzoulParfum</h1>
               </Link>
             </div>
 
@@ -50,7 +61,7 @@ const Header = () => {
 
               <div className="header-actions">
                 <button className="cart-btn" onClick={toggleCart}>
-                  <i className="fas fa-shopping-cart"></i>
+                  <i className="fas fa-shopping-bag"></i>
                   {getTotalItems() > 0 && (
                     <span className="cart-count">{getTotalItems()}</span>
                   )}
@@ -67,8 +78,8 @@ const Header = () => {
         </div>
 
         {isCartOpen && (
-          <div className="cart-overlay">
-            <Cart onClose={toggleCart} />
+          <div className="cart-overlay" onClick={handleOverlayClick}>
+            <Cart onClose={closeCart} />
           </div>
         )}
       </header>

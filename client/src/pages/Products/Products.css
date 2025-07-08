@@ -126,9 +126,8 @@
 .no-products {
   text-align: center;
   padding: 4rem 2rem;
-  background-color: var(--white);
+  /* Retiré: background-color et box-shadow */
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
 }
 
 .no-products-icon {

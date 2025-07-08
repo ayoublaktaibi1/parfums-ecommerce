@@ -58,16 +58,22 @@ export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, { items: [] })
   
   const addToCart = (product, size, quantity) => {
+    // Support pour les packs et les produits normaux
+    const itemId = product.isPack ? product.id : product.id
+    const itemSize = product.isPack ? "Pack" : size
+    
     dispatch({
       type: 'ADD_TO_CART',
       payload: {
-        id: product.id,
+        id: itemId,
         name: product.name,
         brand: product.brand,
         price: product.price,
         image: product.image,
-        size,
-        quantity
+        size: itemSize,
+        quantity,
+        isPack: product.isPack || false,
+        packProducts: product.packProducts || null
       }
     })
   }

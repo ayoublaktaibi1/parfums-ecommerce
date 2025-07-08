@@ -19,10 +19,7 @@ const ProductCard = ({ product, selectedSize }) => {
   }
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR'
-    }).format(price)
+    return `${Math.round(price)} MAD`
   }
 
   return (

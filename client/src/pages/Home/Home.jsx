@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ProductCard from '../../components/ProductCard/ProductCard'
+import { useCart } from '../../context/CartContext'
 import { parfums, packs, promotions } from '../../data/mockData'
 import './Home.css'
 
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([])
   const [currentPromotion, setCurrentPromotion] = useState(0)
+  const { addToCart } = useCart()
 
   useEffect(() => {
     // Charger seulement 4 produits en vedette
@@ -23,10 +25,25 @@ const Home = () => {
   }, [])
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR'
-    }).format(price)
+    return `${Math.round(price)} MAD`
+  }
+
+  const handlePackAddToCart = (pack) => {
+    // Créer un item de pack pour le panier
+    const packItem = {
+      id: `pack-${pack.id}`,
+      name: pack.name,
+      brand: "Pack AzoulParfum",
+      price: pack.price,
+      image: pack.image,
+      size: "Pack",
+      quantity: 1,
+      isPack: true,
+      packProducts: pack.products
+    }
+
+    // Ajouter directement au panier comme un produit normal
+    addToCart(packItem, "Pack", 1)
   }
 
   return (
@@ -93,7 +110,10 @@ const Home = () => {
                     <span className="pack-original-price">{formatPrice(pack.originalPrice)}</span>
                   </div>
                   
-                  <button className="pack-add-to-cart-btn">
+                  <button 
+                    className="pack-add-to-cart-btn"
+                    onClick={() => handlePackAddToCart(pack)}
+                  >
                     Ajouter au panier
                   </button>
                 </div>
@@ -147,10 +167,10 @@ const Home = () => {
             
             <div className="feature-card">
               <div className="feature-icon">
-                <i className="fas fa-undo"></i>
+                <i className="fas fa-headset"></i>
               </div>
-              <h3>Retour gratuit</h3>
-              <p>Retour sous 14 jours si non satisfait</p>
+              <h3>Service après vente</h3>
+              <p>Nous priorisons la satisfaction client</p>
             </div>
             
             <div className="feature-card">
