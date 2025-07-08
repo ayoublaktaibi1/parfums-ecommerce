@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-brand">
-            <h3>AzoulParfum</h3>
+            <h3><img src="../../../AzoulParfum.png" alt="Logo AzoulParfum" /> AzoulParfum</h3>
             <p>Votre boutique en ligne de parfums originaux</p>
           </div>
 

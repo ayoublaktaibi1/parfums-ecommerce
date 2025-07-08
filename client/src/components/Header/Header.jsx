@@ -43,11 +43,12 @@ const Header = () => {
       <header className="header">
         <div className="container">
           <div className="header-content">
-            <div className="logo">
-              <Link to="/">
-                <h1>AzoulParfum</h1>
-              </Link>
-            </div>
+            <Link to="/">
+              <div className="logo">
+                  <img src="../../../AzoulParfum.png" alt="Logo AzoulParfum" />
+                  <h1>AzoulParfum</h1>
+              </div>
+            </Link>
 
             <div className="header-right">
               <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>

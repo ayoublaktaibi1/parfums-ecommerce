@@ -13,18 +13,27 @@
   padding: 0.5rem 0;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 50px;
+}
+
 .logo h1 {
   color: var(--primary-color);
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.logo a {
+.header-content a {
   text-decoration: none;
 }
 
-.logo a:hover h1 {
+.header-content a:hover h1 {
   color: var(--black);
 }
 
